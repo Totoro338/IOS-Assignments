@@ -21,6 +21,7 @@ class sellViewController: UIViewController,UIImagePickerControllerDelegate, UINa
     var uid:String = ""
 
     let imagePicker = UIImagePickerController()
+    
     var photoTaken:Bool = false
     var photoData:NSData = NSData()
     
@@ -56,6 +57,10 @@ class sellViewController: UIViewController,UIImagePickerControllerDelegate, UINa
     
     }
     
+    @IBAction func cancelButton(sender: AnyObject) {
+    
+    
+    }
     @IBAction func enterProductInfo(sender: AnyObject) {
     
         print("photoTaken: " + String(photoTaken))
@@ -70,12 +75,20 @@ class sellViewController: UIViewController,UIImagePickerControllerDelegate, UINa
             var dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             var strDate = dateFormatter.stringFromDate(myDatePicker.date)
+                
             let base64String = photoData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
                 
                 
             let newProduct = ["UserId":uid, "Description":productDescription, "Price":priceEntered, "Date":strDate, "Image":base64String]
             
                 self.ref.childByAppendingPath("ForSale").childByAutoId().setValue(newProduct)
+                
+                let alertController = UIAlertController(title: "Sell a Product", message:
+                    "Product Added!", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+
             
             } else
             {
@@ -83,7 +96,8 @@ class sellViewController: UIViewController,UIImagePickerControllerDelegate, UINa
             self.uidField.text = "No Photo Taken!"
             
                 
-            }} else
+            }
+            } else
             {
                 
             
@@ -92,13 +106,15 @@ class sellViewController: UIViewController,UIImagePickerControllerDelegate, UINa
 
             }
             
-        
+
+
         
         
         
     
     
     }
+    
     
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -118,7 +134,6 @@ class sellViewController: UIViewController,UIImagePickerControllerDelegate, UINa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let imagePicker = UIImagePickerController()
         
         imagePicker.delegate = self
         

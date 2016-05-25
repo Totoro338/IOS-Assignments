@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="eQo-zg-jjX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="sOx-2g-Zhv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -156,6 +156,7 @@
                                 <state key="normal" title="Sign-In"/>
                                 <connections>
                                     <action selector="buttonSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WW4-uQ-6f6"/>
+                                    <segue destination="6dM-kO-W6P" kind="modal" identifier="loginSegue" id="F3H-rF-hOI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX7-zk-0Ly">
@@ -184,17 +185,32 @@
                         <outlet property="inputEmail" destination="HBp-cE-wmb" id="Sxp-RK-Z1d"/>
                         <outlet property="inputPassword" destination="R24-lr-6Jd" id="ePH-bf-SNg"/>
                         <outlet property="messageLabel" destination="1u8-oY-dyA" id="hkm-rT-HAI"/>
-                        <segue destination="RLu-n6-1VM" kind="modal" identifier="loginSegue" id="1PT-D6-daj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1123" y="256"/>
+            <point key="canvasLocation" x="1145" y="287"/>
         </scene>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="xKf-dT-Aa4">
+            <objects>
+                <navigationController id="6dM-kO-W6P" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lXx-or-fvH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RLu-n6-1VM" kind="relationship" relationship="rootViewController" id="JXj-9B-1dZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aJX-3h-59b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1145" y="1043"/>
+        </scene>
+        <!--Main Menu View Controller-->
         <scene sceneID="q8w-Nc-e14">
             <objects>
-                <viewController id="RLu-n6-1VM" sceneMemberID="viewController">
+                <viewController id="RLu-n6-1VM" customClass="mainMenuViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X82-tR-6dn"/>
                         <viewControllerLayoutGuide type="bottom" id="nzq-rq-8Vn"/>
@@ -216,7 +232,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <state key="normal" title="Sell"/>
                                 <connections>
-                                    <segue destination="eQo-zg-jjX" kind="modal" id="k9F-HM-8h0"/>
+                                    <segue destination="eQo-zg-jjX" kind="push" id="k9F-HM-8h0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,7 +249,7 @@
             </objects>
             <point key="canvasLocation" x="1576" y="287"/>
         </scene>
-        <!--Sell View Controller-->
+        <!--Enter a New Product-->
         <scene sceneID="XSF-ru-CRz">
             <objects>
                 <viewController id="eQo-zg-jjX" customClass="sellViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -246,35 +262,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product  Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZvT-u0-HMb">
-                                <rect key="frame" x="23" y="67" width="153" height="69"/>
+                                <rect key="frame" x="23" y="113" width="153" height="69"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toY-iV-JYx">
-                                <rect key="frame" x="23" y="194" width="80" height="21"/>
+                                <rect key="frame" x="23" y="200" width="80" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZGi-q2-S9L">
-                                <rect key="frame" x="123" y="76" width="175" height="89"/>
+                                <rect key="frame" x="123" y="118" width="175" height="64"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="textColor" white="0.63569504310000002" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kmy-1X-SN5">
-                                <rect key="frame" x="123" y="190" width="175" height="30"/>
+                                <rect key="frame" x="123" y="196" width="175" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22b-zq-8DP">
-                                <rect key="frame" x="113" y="509" width="94" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rJr-Ax-fOJ">
+                                <rect key="frame" x="187" y="515" width="94" height="45"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Enter"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="enterProductInfo:" destination="eQo-zg-jjX" eventType="touchUpInside" id="4D6-m6-hC9"/>
+                                    <action selector="cancelButton:" destination="eQo-zg-jjX" eventType="touchUpInside" id="12A-c0-ZnP"/>
+                                    <action selector="enterProductInfo:" destination="eQo-zg-jjX" eventType="touchUpInside" id="Poi-DR-rs5"/>
+                                    <segue destination="ngA-Bq-i3R" kind="unwind" unwindAction="unwindSegue:" id="U16-GI-iei"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="49P-R1-Skq">
@@ -296,7 +314,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="UID" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8X-3P-ivD">
-                                <rect key="frame" x="20" y="10" width="275" height="69"/>
+                                <rect key="frame" x="20" y="56" width="275" height="69"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -308,12 +326,22 @@
                                     <action selector="getPhoto:" destination="eQo-zg-jjX" eventType="touchUpInside" id="ODt-mw-OXC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="22b-zq-8DP">
+                                <rect key="frame" x="52" y="515" width="94" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Enter"/>
+                                <connections>
+                                    <action selector="enterProductInfo:" destination="eQo-zg-jjX" eventType="touchUpInside" id="4D6-m6-hC9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="b86-KL-MnK" firstAttribute="top" secondItem="rJr-Ax-fOJ" secondAttribute="bottom" id="mZl-mj-Rxb"/>
                             <constraint firstItem="b86-KL-MnK" firstAttribute="top" secondItem="22b-zq-8DP" secondAttribute="bottom" id="qs0-Ds-u98"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Enter a New Product" id="mSR-wO-OXt"/>
                     <connections>
                         <outlet property="inputPrice" destination="kmy-1X-SN5" id="JCL-9p-hTc"/>
                         <outlet property="inputProductDescription" destination="ZGi-q2-S9L" id="rZI-zs-66m"/>
@@ -323,8 +351,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gz1-Yd-Cxr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ngA-Bq-i3R" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1576" y="975"/>
+            <point key="canvasLocation" x="1588" y="1059"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Yvg-0a-sTR">

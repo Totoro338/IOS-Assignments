@@ -18,6 +18,7 @@
 		8004153A1CF40361003F54F1 /* sellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800415391CF40361003F54F1 /* sellViewController.swift */; };
 		800415411CF45917003F54F1 /* IMG_0025.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 8004153F1CF45917003F54F1 /* IMG_0025.JPG */; };
 		800415421CF45917003F54F1 /* IMG_0001.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 800415401CF45917003F54F1 /* IMG_0001.JPG */; };
+		800415441CF56366003F54F1 /* mainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800415431CF56366003F54F1 /* mainMenuViewController.swift */; };
 		807167341CEC60C000CA39F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807167331CEC60C000CA39F1 /* AppDelegate.swift */; };
 		807167361CEC60C000CA39F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807167351CEC60C000CA39F1 /* ViewController.swift */; };
 		807167391CEC60C000CA39F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 807167371CEC60C000CA39F1 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		800415391CF40361003F54F1 /* sellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sellViewController.swift; sourceTree = "<group>"; };
 		8004153F1CF45917003F54F1 /* IMG_0025.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0025.JPG; sourceTree = "<group>"; };
 		800415401CF45917003F54F1 /* IMG_0001.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IMG_0001.JPG; sourceTree = "<group>"; };
+		800415431CF56366003F54F1 /* mainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = mainMenuViewController.swift; path = ../mainMenuViewController.swift; sourceTree = "<group>"; };
 		807167301CEC60C000CA39F1 /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		807167331CEC60C000CA39F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		807167351CEC60C000CA39F1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		807167321CEC60C000CA39F1 /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				800415431CF56366003F54F1 /* mainMenuViewController.swift */,
 				807167331CEC60C000CA39F1 /* AppDelegate.swift */,
 				807167351CEC60C000CA39F1 /* ViewController.swift */,
 				807167371CEC60C000CA39F1 /* Main.storyboard */,
@@ -302,6 +305,7 @@
 				807167361CEC60C000CA39F1 /* ViewController.swift in Sources */,
 				807167341CEC60C000CA39F1 /* AppDelegate.swift in Sources */,
 				800415381CF016F1003F54F1 /* webViewController.swift in Sources */,
+				800415441CF56366003F54F1 /* mainMenuViewController.swift in Sources */,
 				8004153A1CF40361003F54F1 /* sellViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

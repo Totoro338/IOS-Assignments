@@ -93,6 +93,7 @@ class enterLoginInfoViewController: UIViewController {
                         
                         self.dismissViewControllerAnimated(true, completion: nil)
                         
+                        
                         //self.messageLabel.text = "User Created Successfully! Please login now!"
                         
                         
