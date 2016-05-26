@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class buyViewController: UIViewController, UITableViewDataSource {
+class buyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     // Declares the firebase link
     
@@ -81,9 +81,9 @@ class buyViewController: UIViewController, UITableViewDataSource {
         
     }
 
-    func tableView
-   
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("didSelectRowAtIndexPath function called")
         selectedRow = indexPath.row
     }
     
