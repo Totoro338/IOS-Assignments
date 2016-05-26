@@ -19,10 +19,10 @@ class buyViewController: UIViewController, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var productDescription:[String] = ["Des1"]
-    var productPrice:[Int] = [1]
-    var productDate:[String] = ["Date1"]
-    var productImage:[String] = ["Image1"]
+    var productDescription:[String] = ["Des1", "Des2"]
+    var productPrice:[Int] = [1, 2]
+    var productDate:[String] = ["Date1", "Date2"]
+    var productImage:[String] = ["Image1", "Image2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +55,6 @@ class buyViewController: UIViewController, UITableViewDataSource {
         
     }
 
-        
-        // Do any additional setup after loading the view.
-
    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productDescription.count;
@@ -67,8 +64,18 @@ class buyViewController: UIViewController, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("productCell", forIndexPath: indexPath)
         
+        
+        if let cell = cell as? ProductTableViewCell {
+            cell.labelDescription.text = productDescription[indexPath.row]
+            cell.labelPrice.text = String(productPrice[indexPath.row])
+            cell.labelDate.text = productDate[indexPath.row]
+            
+
+        }
+        
+        return cell
+
         // modify the cell
-        cell.labelDescription.text = productDescription[indexPath.row]
         
         
         return cell
