@@ -61,6 +61,7 @@ class sellViewController: UIViewController,UIImagePickerControllerDelegate, UINa
     
     
     }
+   
     @IBAction func enterProductInfo(sender: AnyObject) {
     
         print("photoTaken: " + String(photoTaken))

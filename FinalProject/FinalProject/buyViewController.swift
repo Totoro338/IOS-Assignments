@@ -28,18 +28,59 @@ class buyViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var productImage:[String] = []
     var productAutoID:[String] = []
     
+    
     @IBAction func buyItem(sender: AnyObject) {
+        buyItemProcess()
+        }
+    
+    func buyItemProcess()
+    {
         print(selectedRow)
+        
+        uid = ref.authData.uid
+        
         if selectedRow != -1 {
-        ref.childByAppendingPath("Sold").setValue(ref.childByAppendingPath(productAutoID[selectedRow]))
+        
+        //print(ref.childByAppendingPath("ForSale").value[productAutoID[selectedRow]])
+        
+        let soldProduct = ["BuyerUserId":uid, "Description":productDescription[selectedRow], "Price":productPrice[selectedRow], "Date":productDate[selectedRow], "Image":productImage[selectedRow]]
+         
+        self.ref.childByAppendingPath("Sold").childByAppendingPath(productAutoID[selectedRow]).setValue(soldProduct)
+            
+       self.ref.childByAppendingPath("ForSale").childByAppendingPath(productAutoID[selectedRow]).removeValue()
+        productDescription.removeAtIndex(selectedRow)
+        productPrice.removeAtIndex(selectedRow)
+        productDate.removeAtIndex(selectedRow)
+        productImage.removeAtIndex(selectedRow)
+        productAutoID.removeAtIndex(selectedRow)
+        
+        selectedRow = -1
+            
+        self.tableView.reloadData()
+    
+            
+            //ref.childByAppendingPath("ForSale").childByAppendingPath([productAutoID[selectedRow]).setvalue(
+        
+        
         }
     }
 
+    func handleSwipes(sender:UISwipeGestureRecognizer) {
+        if (sender.direction == .Left) {
+            print("Swipe Left")
+        }
+        
+        if (sender.direction == .Right) {
+            print("Swipe Right")
+
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.dataSource = self
+        tableView.delegate = self
         
         if ref.authData != nil {
             uid = ref.authData.uid
@@ -72,6 +113,16 @@ class buyViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     
                 })
             
+ 
+            var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+            var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+            
+            leftSwipe.direction = .Left
+            rightSwipe.direction = .Right
+            
+            
+            
+
             
             
         } else {
@@ -85,6 +136,8 @@ class buyViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("didSelectRowAtIndexPath function called")
         selectedRow = indexPath.row
+        print(selectedRow)
+        print("AutoID \(productAutoID[selectedRow])")
     }
     
     
@@ -106,6 +159,7 @@ class buyViewController: UIViewController, UITableViewDataSource, UITableViewDel
                                    options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)
             let decodedImage = UIImage(data:imageData!)
             cell.productImage.image = decodedImage
+            
 
         }
         

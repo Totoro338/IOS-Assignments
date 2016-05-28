@@ -11,18 +11,42 @@ import Firebase
 
 class mainMenuViewController: UIViewController {
 
-    
-    @IBAction func unwindSegue(segue:UIStoryboardSegue) {
-        
-    }
-    
+    @IBOutlet weak var buyImage: UIImageView!
+
+    @IBOutlet weak var sellImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var imageView = buyImage
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        imageView.userInteractionEnabled = true
+        imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+        var imageView2 = sellImage
+        
+        
+        let tapGestureRecognizer2 = UITapGestureRecognizer(target:self, action:Selector("imageTapped2:"))
+        imageView2.userInteractionEnabled = true
+        imageView2.addGestureRecognizer(tapGestureRecognizer2)
+        
         // Do any additional setup after loading the view.
     }
 
+    func imageTapped(img: AnyObject)
+    {
+        self.performSegueWithIdentifier("buySegue", sender: self)
+        
+    }
+    
+    func imageTapped2(img: AnyObject)
+    {
+        self.performSegueWithIdentifier("sellSegue", sender: self)
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
